@@ -13,5 +13,6 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 
-Route::post('/transaction', [TransactionController::class, 'store']);
+Route::post('/transaction', [TransactionController::class, 'store'])
+    ->middleware(VerifySignature::class);
 Route::get('/transaction', [TransactionController::class, 'list']);
